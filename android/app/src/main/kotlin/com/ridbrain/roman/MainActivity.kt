@@ -1,4 +1,4 @@
-package com.example.ridbrain_project
+package com.ridbrain.roman
 
 import io.flutter.embedding.android.FlutterActivity
 

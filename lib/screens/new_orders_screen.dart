@@ -30,6 +30,7 @@ class _NewOrdersScreenState extends State<NewOrdersScreen> {
 
   List<Record> _records = [];
   bool _loading = true;
+  bool _first = true;
 
   void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {
     var select = selectedDay.toLocal().add(
@@ -136,8 +137,9 @@ class _NewOrdersScreenState extends State<NewOrdersScreen> {
   Widget build(BuildContext context) {
     var provider = Provider.of<DriverProvider>(context);
 
-    if (_records.isEmpty) {
+    if (_first) {
       _updateList(provider.driver.driverToken);
+      _first = false;
     }
 
     return Scaffold(

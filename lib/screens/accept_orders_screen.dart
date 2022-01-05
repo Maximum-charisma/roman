@@ -18,6 +18,7 @@ class AcceptOrdersScreen extends StatefulWidget {
 class _AcceptOrdersScreenState extends State<AcceptOrdersScreen> {
   List<Record> _records = [];
   bool _loading = true;
+  bool _first = true;
 
   void _updateList(String token) async {
     setState(() {
@@ -97,8 +98,9 @@ class _AcceptOrdersScreenState extends State<AcceptOrdersScreen> {
   Widget build(BuildContext context) {
     var provider = Provider.of<DriverProvider>(context);
 
-    if (_records.isEmpty) {
+    if (_first) {
       _updateList(provider.driver.driverToken);
+      _first = false;
     }
 
     return Scaffold(

@@ -1,0 +1,36 @@
+name: ridbrain_project
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  shared_preferences: ^2.0.11
+  provider: ^6.0.1
+  http: ^0.13.4
+  overlay_support: ^1.2.1
+  geolocator: ^8.0.1
+  intl: ^0.17.0
+  line_icons: ^2.0.1
+  url_launcher: ^6.0.17
+  table_calendar: ^3.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  flutter_launcher_icons: ^0.9.2
+
+  flutter_lints: ^1.0.0
+
+flutter:
+
+  uses-material-design: true

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:ridbrain_project/screens/change_pass_screen.dart';
+import 'package:ridbrain_project/screens/policy_screen.dart';
 import 'package:ridbrain_project/services/app_bar.dart';
 import 'package:ridbrain_project/services/constants.dart';
 import 'package:ridbrain_project/services/prefs_handler.dart';
@@ -132,6 +133,48 @@ class _AccountScreenState extends State<AccountScreen> {
                         ),
                         Text(
                           'Выйти',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              height: 50,
+              margin: const EdgeInsets.fromLTRB(15, 5, 15, 10),
+              decoration: const BoxDecoration(
+                borderRadius: radius,
+              ),
+              child: Material(
+                borderRadius: radius,
+                color: Colors.grey[200],
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        // fullscreenDialog: true,
+                        builder: (context) => PolicyScreen(),
+                      ),
+                    );
+                  },
+                  borderRadius: radius,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        Icon(LineIcons.info),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Политика и кофиденциальность',
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),

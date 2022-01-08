@@ -460,20 +460,24 @@ UserAnswer userAnswerFromJson(String str) =>
 class UserAnswer {
   UserAnswer({
     required this.error,
+    required this.token,
     required this.user,
   });
 
   int error;
+  String token;
   User user;
 
   factory UserAnswer.fromJson(Map<String, dynamic> json) => UserAnswer(
         error: json["error"],
+        token: json["token"],
         user: User.fromJson(json['user']),
       );
 }
 
 class User {
   User({
+    required this.token,
     required this.userId,
     required this.userName,
     required this.userEmail,
@@ -481,6 +485,7 @@ class User {
     required this.userRole,
   });
 
+  String? token;
   int userId;
   String userName;
   String userEmail;
@@ -508,6 +513,7 @@ class User {
         userEmail: json["user_email"],
         userStatus: json["user_status"],
         userRole: json["user_role"],
+        token: json["token"] != null ? json["token"] : '',
       );
 }
 

@@ -28,6 +28,22 @@ class Network {
     }
   }
 
+  static Future<String?> _webRequest({
+    required String url,
+    Map<String, String>? params,
+  }) async {
+    var response = await http.post(
+      Uri.parse(apiWebUrl + url),
+      body: params,
+    );
+
+    if (response.statusCode == 200) {
+      return response.body;
+    } else {
+      return null;
+    }
+  }
+
   void _showAnswer(int status, String message) {
     StandartSnackBar.show(
       context,
@@ -36,7 +52,7 @@ class Network {
     );
   }
 
-  static Future<bool> checkToken(
+  static Future<bool> checkDriverToken(
     String token,
   ) async {
     var address = 'check_token.php';
@@ -47,6 +63,26 @@ class Network {
 
     if (data != null) {
       var answer = checkTokenFromJson(data);
+      if (answer.error == 0) {
+        return answer.status == 1;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> checkAdminToken(String token) async {
+    var address = 'check_token.php';
+
+    var data = await _webRequest(url: address, params: {
+      "token": token,
+    });
+
+    if (data != null) {
+      var answer = tokenAnswerFromJson(data);
+
       if (answer.error == 0) {
         return answer.status == 1;
       } else {
@@ -73,6 +109,29 @@ class Network {
       return answer;
     } else {
       return null;
+    }
+  }
+
+  Future<UserAnswer> userAuth(
+    String login,
+    String pass,
+  ) async {
+    var address = 'user_auth.php';
+
+    var data = await _webRequest(url: address, params: {
+      "login": login,
+      "pass": pass,
+    });
+    if (data != null) {
+      var answer = userAnswerFromJson(data);
+      if (answer.error == 0) {
+        return answer;
+      } else {
+        _showAnswer(answer.error, answer.error.toString());
+        return throw Exception();
+      }
+    } else {
+      return throw Exception();
     }
   }
 

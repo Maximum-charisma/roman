@@ -22,6 +22,7 @@ dependencies:
   line_icons: ^2.0.1
   url_launcher: ^6.0.17
   table_calendar: ^3.0.2
+  webview_flutter: ^2.0.14
 
 dev_dependencies:
   flutter_test:
